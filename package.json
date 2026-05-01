@@ -1,0 +1,15 @@
+{
+  "name": "swiftedge-relay",
+  "version": "1.0.0",
+  "description": "High-performance edge relay for Netlify",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "netlify dev --edge",
+    "build": "echo 'Build complete'",
+    "deploy": "netlify deploy --prod"
+  },
+  "devDependencies": {
+    "netlify-cli": "latest"
+  }
+}

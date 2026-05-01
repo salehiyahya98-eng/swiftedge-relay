@@ -1,0 +1,31 @@
+[build]
+  command = "npm run build"
+  publish = "public"
+
+[[edge_functions]]
+  function = "relay"
+  path = "/*"
+
+# Performance optimizations
+[build.environment]
+  NODE_VERSION = "20"
+  NETLIFY_EDGE_FUNCTIONS_MEMORY = "256"
+
+# Cache settings for static assets
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
